@@ -1,0 +1,235 @@
+{% extends 'Store/base.html' %}
+{% load static %}
+
+
+
+{% block title %}Vaatteet - destination dream{% endblock %}
+
+
+
+{% block body %}
+
+<div class="container-fluid">
+	<div class="row nmb-10">
+		<div class="col-lg-6">
+			<div class="box-element">
+				<a class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Back to Cart</a>
+				<hr>
+				<h3>Order Summary</h3>
+				<hr>
+				<!-- lopping item -->
+
+				{% for item in items %}
+
+				<div class="cart-row">
+					<div class="cart-image"><img class="row-image img-fluid" src="{{ item.product.imageURL }}"></div>
+					<div class="cart-name">
+						<p>{{ item.product.name }}</p>
+					</div>
+					<div class="cart-price">
+						<p>₹ {{ item.product.price }}</p>
+					</div>
+					<div class="cart-qty">
+						<p>X {{ item.quantity }}</p>
+					</div>
+				</div>
+
+				{% endfor %}
+
+				<!-- lopping item -->
+				<h5>Items: <strong>{{ order.get_cart_items }}</strong></h5>
+				<h5>Total: ₹ {{ order.get_cart_total|floatformat:2 }}</h5>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="box-element" id="form-wrapper">
+				<form id="form">
+					{% csrf_token %}
+					<div id="user-info">
+						{% if user.is_authenticated %}
+						<h4>Wellcome {{ request.user }}</h4>
+
+						{% else %}
+						<h4>Guest Users </h4>
+
+						{% endif %}
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<input required class="form-control" type="text" name="name" placeholder="Name.."
+										value="{% if user.is_authenticated %}{{ request.user }}{% endif %}">
+								</div>
+
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<input required class="form-control" type="email" name="email" placeholder="Email.."
+										value="{% if user.is_authenticated %}{{ request.user.email }}{% endif %}">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="shipping-info">
+						<hr>
+
+						<p>Shipping Information:</p>
+
+						<hr>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<input class="form-control" type="text" name="address" placeholder="Address.."
+										required>
+								</div>
+
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<input class="form-control" type="text" name="city" placeholder="City.." required>
+								</div>
+
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<input class="form-control" type="tel" name="state" placeholder="Phone Number"
+										required>
+								</div>
+
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<input class="form-control" type="text" name="zipcode" placeholder="Zip code.."
+										required>
+								</div>
+
+							</div>
+
+
+						</div>
+					</div>
+
+					<hr>
+					<input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
+				</form>
+			</div>
+
+
+			<br>
+			<div class="box-element hidden" id="payment-info">
+				<strong>Payment Options</strong>
+				<button id="make-payment" class="btn btn-success">COD (cash on delivery)</button>
+			</div>
+
+
+		</div>
+
+
+	</div>
+</div>
+
+
+
+
+<script>
+
+	var total = '{{order.get_cart_total}}'
+
+
+
+	// unkwn user
+	if (user != 'AnonymousUser') {
+		// document.getElementById('user-info').innerHTML = ''
+	}
+
+	if (user != 'AnonymousUser') {
+		// hide intire form
+		// document.getElementById('form-wrapper').classList.add("hidden");
+		// Show payment of logged in user wants to buy item that doiesnot require shipping
+		document.getElementById('payment-info').classList.remove('hidden');
+	}
+	// end unkwn user
+
+
+	var form = document.getElementById('form')
+	csrftoken = form.getElementsByTagName("input")[0].value
+
+	console.log("NewToken: ", form.getElementsByTagName("input")[0].value)
+
+	form.addEventListener('submit', function (e) {
+		e.preventDefault()
+		console.log('Form Submitted')
+		document.getElementById('form-button').classList.add("hidden");
+		document.getElementById('payment-info').classList.remove("hidden");
+	})
+
+	document.getElementById('make-payment').addEventListener('click', function (e) {
+		submitFormData()
+	})
+
+	function submitFormData() {
+
+		console.log('Payment Submitted button clicked')
+		var tok = form.csrfmiddlewaretoken.value
+		var userFormData = {
+			'name': null,
+			'email': null,
+			'total': total,
+		}
+
+		var shippingInfo = {
+			'address': null,
+			'city': null,
+			'state': null,
+			'zipcode': null,
+		}
+
+
+		if (user == 'AnonymousUser') {
+			userFormData.name = form.name.value
+			userFormData.email = form.email.value
+			shippingInfo.address = form.address.value
+			shippingInfo.city = form.city.value
+			shippingInfo.state = form.state.value
+			shippingInfo.zipcode = form.zipcode.value
+		} else {
+			userFormData.name = form.name.value
+			userFormData.email = form.email.value
+			shippingInfo.address = form.address.value
+			shippingInfo.city = form.city.value
+			shippingInfo.state = form.state.value
+			shippingInfo.zipcode = form.zipcode.value
+		}
+
+		var url = '/process_order/'
+		fetch(url, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'X-CSRFToken': tok,
+			},
+			body: JSON.stringify({ 'form': userFormData, 'shipping': shippingInfo })
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				console.log('Success', data);
+				alert('Transtion complete');
+
+				cart = {};
+				document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+
+
+				window.location.href = "{% url 'home' %}"
+			})
+	}
+</script>
+
+
+
+
+
+
+
+
+
+{% endblock %}

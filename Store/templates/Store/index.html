@@ -1,0 +1,132 @@
+{% extends 'Store/base.html' %}
+{% load static %}
+
+
+
+{% block title %}Vaatteet - destination dream{% endblock %}
+
+
+
+{% block body %}
+
+<!-- Slider main-banner -->
+<section class="home-case-box">
+    <div class="home-case owl-carousel">
+        <div class="item"><img src="{% static 'Store/images/banner/fl-1.jpg' %}" alt="Home-Slider1" class="img-fluid">
+        </div>
+        <div class="item"><img src="{% static 'Store/images/banner/fl-2.jpg' %}" alt="Home-Slider1" class="img-fluid">
+        </div>
+        <div class="item"><img src="{% static 'Store/images/banner/fl-3.jpg' %}" alt="Home-Slider1" class="img-fluid">
+        </div>
+
+
+    </div>
+</section>
+<!-- End Slider main-banner -->
+
+
+
+<!-- -----------------Content here----------------------- -->
+
+
+        {% for item_list in plist %}
+  
+        <section class="home-item-box">
+    <div class="lead-head">
+        <div class="item-heading">
+            <h4>Best of {{item_list}} </h4>
+        </div>
+        <a href="{% url 'products' slug=item_list.category %}" class="btn btn-danger">View All</a>
+    </div>
+    <div class="item-products owl-carousel">
+        {% for item_product in pproduct %}
+
+        {% if item_product.cat == item_list %}
+        
+            {% comment %} <a href="{% url 'products' slug=item.category %}"> {% endcomment %}
+            <a href="{% url 'details' pk=item_product.id %}">
+        <div class="product">
+
+                <div class="product-pic">
+                    <img src="{{ item_product.imageURL }}" alt="product-pic">
+                </div>
+                <div class="product-lead text-center">
+                    <h6 class="p_name">{{item_product.name}}</h6>
+                    <div class="p_price">From ₹ {{item_product.price}}</div>
+                    {% comment %} <div class="p_brand">newbrand || new Launch</div> {% endcomment %}
+                </div>
+        </div>
+            </a>
+        {% endif %}
+        {% endfor %}
+            </div>
+
+</section>
+        {% endfor %}
+
+
+
+
+<!-- End Content here -->
+
+{% comment %} <section class="home-item-box">
+    <div class="lead-head">
+        <div class="item-heading">
+            <h4>Best of Appliances </h4>
+        </div>
+        <a href="" class="btn btn-danger">View All</a>
+    </div>
+    <div class="item-products owl-carousel">
+
+
+
+        {% for item in products %}
+        {% if item.main_cat.id == 5 %}
+        <div class="product">
+            <a href="{% url 'products' slug=item.category %}">
+
+                <div class="product-pic">
+                    <img src="{% static 'Store/images/pp.jpeg'%}" alt="product-pic">
+                </div>
+                <div class="product-lead text-center">
+                    <h6 class="p_name">{{item.category}} </h6>
+                    <div class="p_price">From ₹ 2354</div>
+                    <div class="p_brand">newbrand || new Launch</div>
+                </div>
+            </a>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+
+    </div>
+
+</section> {% endcomment %}
+
+
+
+
+
+
+
+{% comment %} {% for item in products %}
+{% if item.cat.main_cat.id == 5 %}
+<div class="product">
+    <div class="">
+        <div class="product-pic">
+            <img src="{% static 'Store/images/pp.jpeg'%}" alt="product-pic">
+        </div>
+        <div class="product-lead text-center">
+            <h6 class="p_name">{{item.name}} </h6>
+            <div class="p_price">From ₹ {{item.price}}</div>
+            <div class="p_brand">newbrand || new Launch</div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endfor %} {% endcomment %}
+
+
+
+
+{% endblock %}

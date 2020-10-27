@@ -1,0 +1,330 @@
+{% extends 'Store/base.html' %}
+{% load static %}
+
+
+
+{% block title %}{{object.name}} - Vaatteet detination dream{% endblock %}
+
+
+
+{% block body %}
+
+<div class="container-fluid np-10">
+    <div class="row">
+        <!-- Side bar -->
+        <div class="col-md-4  sidebar">
+            <div class="d-sidebar bg-white">
+                <div class="d-s-image text-center">
+                    <img src="{{object.imageURL}}" alt="" class="img-fluid">
+                </div>
+
+                <div class="row np-10">
+                    <div class="col-md-6 nmt-10"><button data-product='{{ object.id }}' data-action='add'
+                            class="btn btn-block  btn-success update-cart"><i class="fas fa-shopping-cart"></i> Add to
+                            Cart</button></div>
+                    <div class="col-md-6 nmt-10"><a href="{% url 'checkout' %}" class="btn btn-block btn-danger"><i
+                                class="fas fa-sign-in-alt"></i> Buy Now</a></div>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- /Side bar -->
+
+
+        <!-- main section -->
+        <div class="col-md-8">
+            <div class="bg-white np-10">
+                <div class="bread-head-product">
+                    <div class="">
+                        <ul class="breadcrumb">
+                            <li><strong>{{object.cat}} </strong> ({{object.Gender}})</li>
+                        </ul>
+                        <h4>{{object.name}}</h4>
+                    </div>
+
+                </div>
+                <div class="list-box">
+                    <div class="list-box-lead">
+                        <p class="list-title"></p>
+                        <p class="list-color">{{object.des}}</p>
+                        <p><span class="list-rating">4.2 <i class="fas fa-star"></i></span>
+                            <span>(120)</span>
+                        </p>
+                        <p class="list-price d-list">₹{{object.price}} <del><small>₹8540</small></del><span>42%
+                                off</span></p>
+
+                        <h4>Offer Availabe</h4>
+                        <ul>
+                            <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor, doloribus.</li>
+                            <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor, doloribus.</li>
+                            <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor, doloribus.</li>
+                        </ul>
+
+                        <p class="nfont-16">Warrenty <span>3 years </span></p>
+
+                        <button type="button" class="btn btn-warning mb-3 mt-3" data-toggle="collapse"
+                            data-target="#spec-inst">Specifications <i class='fas fa-arrow-down'></i></button>
+
+                        <div id="spec-inst" class="collapse">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora corporis, dolores
+                                alias maiores, fuga, fugit quidem nemo at enim impedit autem itaque quod voluptate
+                                ad consectetur rem. Exercitationem placeat, sit adipisci ad, aperiam numquam
+                                laboriosam sapiente blanditiis quas dolorum libero iure totam eligendi et maxime
+                                illo architecto vel. Voluptatibus tempore repellat distinctio veritatis velit
+                                dolores repudiandae laborum nihil! Quo nostrum, in dolorem sit repellat accusamus
+                                dolores, cumque ducimus nemo ratione perferendis. Quam modi rerum odio veniam porro
+                                amet, possimus explicabo aliquid, blanditiis eaque sunt, culpa laborum! Explicabo
+                                mollitia distinctio nihil architecto. Quos officia totam deserunt, doloribus
+                                perferendis aperiam fuga facere, mollitia, cum architecto illo ea! Atque perferendis
+                                nihil, non id modi tempora eius debitis quas quibusdam rerum quae ipsa maiores.</p>
+                        </div>
+                        <button type="button" class="btn btn-warning mb-3 mt-3" data-toggle="collapse"
+                            data-target="#des-inst">Description <i class='fas fa-arrow-down'></i></button>
+
+                        <div id="des-inst" class="collapse">
+                            <p>{{object.des}}</p>
+                        </div>
+                        <hr>
+
+                        <div class="reviews-box">
+                            <div class="rating-head">
+                                <h4>Reviews</h4>
+                                <button type="button" class="btn btn-light mb-3 mt-3" data-toggle="collapse"
+                                    data-target="#rating-inst">Rate Product</button>
+                            </div>
+                            <div id="rating-inst" class="collapse">
+                                <form action="">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Enter Name">
+                                        <input type="text" class="form-control" placeholder="Enter Name">
+                                    </div>
+                                </form>
+                            </div>
+                            <hr>
+
+                            <div class="re-item">
+                                <p class="nfont-13"><span class="list-rating">4 <i class="fas fa-star"></i></span>
+                                    <span class="nfont-15">Awsom product at this price</span></p>
+                                <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Veritatis, soluta. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Sequi illum enim nihil explicabo est, maxime a numquam provident vel cumque
+                                    error. Omnis at molestiae ducimus sunt assumenda soluta rerum ea.</p>
+                                <ul class="d-flex">
+                                    <li class="nfw-600 npr-10">Name Das</li>
+                                    <li class="nfw-600 npr-10">26 feb 2020</li>
+                                    <li class="nfw-600 npr-10">Verifiyed</li>
+                                </ul>
+
+                            </div>
+                            <div class="re-item">
+                                <p class="nfont-13"><span class="list-rating">4 <i class="fas fa-star"></i></span>
+                                    <span class="nfont-15">Awsom product at this price</span></p>
+                                <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Veritatis, soluta. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Sequi illum enim nihil explicabo est, maxime a numquam provident vel cumque
+                                    error. Omnis at molestiae ducimus sunt assumenda soluta rerum ea.</p>
+                                <ul class="d-flex">
+                                    <li class="nfw-600 npr-10">Name Das</li>
+                                    <li class="nfw-600 npr-10">26 feb 2020</li>
+                                    <li class="nfw-600 npr-10">Verifiyed</li>
+                                </ul>
+
+                            </div>
+                            <div class="re-item">
+                                <p class="nfont-13"><span class="list-rating">4 <i class="fas fa-star"></i></span>
+                                    <span class="nfont-15">Awsom product at this price</span></p>
+                                <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Veritatis, soluta. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Sequi illum enim nihil explicabo est, maxime a numquam provident vel cumque
+                                    error. Omnis at molestiae ducimus sunt assumenda soluta rerum ea.</p>
+                                <ul class="d-flex">
+                                    <li class="nfw-600 npr-10">Name Das</li>
+                                    <li class="nfw-600 npr-10">26 feb 2020</li>
+                                    <li class="nfw-600 npr-10">Verifiyed</li>
+                                </ul>
+
+                            </div>
+                            <div class="re-item">
+                                <p class="nfont-13"><span class="list-rating">4 <i class="fas fa-star"></i></span>
+                                    <span class="nfont-15">Awsom product at this price</span></p>
+                                <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Veritatis, soluta. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Sequi illum enim nihil explicabo est, maxime a numquam provident vel cumque
+                                    error. Omnis at molestiae ducimus sunt assumenda soluta rerum ea.</p>
+                                <ul class="d-flex">
+                                    <li class="nfw-600 npr-10">Name Das</li>
+                                    <li class="nfw-600 npr-10">26 feb 2020</li>
+                                    <li class="nfw-600 npr-10">Verifiyed</li>
+                                </ul>
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- /main section -->
+    </div>
+
+
+    {% comment %} <div class="bg-white mt-3 np-10">
+
+        <section class="home-item-box">
+            <div class="lead-head">
+                <div class="item-heading">
+                    <h4>Other Similar Products</h4>
+                </div>
+                <a href="" class="btn btn-danger">View All</a>
+            </div>
+            <div class="item-products owl-carousel">
+                <div class="product">
+                    <div class="">
+                        <div class="product-pic">
+                            <img src="./static/images/pp.jpeg" alt="product-pic">
+                        </div>
+                        <div class="product-lead text-center">
+                            <h6 class="p_name">Mi Earphone </h6>
+                            <div class="p_price">From ₹ 399 </div>
+                            <div class="p_brand">newbrand || new Launch</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product">
+                    <div class="">
+                        <div class="product-pic">
+                            <img src="./static/images/pp.jpeg" alt="product-pic">
+                        </div>
+                        <div class="product-lead text-center">
+                            <h6 class="p_name">Mi Earphone </h6>
+                            <div class="p_price">From ₹ 399 </div>
+                            <div class="p_brand">newbrand || new Launch</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <div class="product-pic">
+                            <img src="./static/images/pp.jpeg" alt="product-pic">
+                        </div>
+                        <div class="product-lead text-center">
+                            <h6 class="p_name">Mi Earphone </h6>
+                            <div class="p_price">From ₹ 399 </div>
+                            <div class="p_brand">newbrand || new Launch</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <div class="product-pic">
+                            <img src="./static/images/pp.jpeg" alt="product-pic">
+                        </div>
+                        <div class="product-lead text-center">
+                            <h6 class="p_name">Mi Earphone </h6>
+                            <div class="p_price">From ₹ 399 </div>
+                            <div class="p_brand">newbrand || new Launch</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <div class="product-pic">
+                            <img src="./static/images/pp.jpeg" alt="product-pic">
+                        </div>
+                        <div class="product-lead text-center">
+                            <h6 class="p_name">Mi Earphone </h6>
+                            <div class="p_price">From ₹ 399 </div>
+                            <div class="p_brand">newbrand || new Launch</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <div class="product-pic">
+                            <img src="./static/images/pp.jpeg" alt="product-pic">
+                        </div>
+                        <div class="product-lead text-center">
+                            <h6 class="p_name">Mi Earphone </h6>
+                            <div class="p_price">From ₹ 399 </div>
+                            <div class="p_brand">newbrand || new Launch</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <div class="product-pic">
+                            <img src="./static/images/pp.jpeg" alt="product-pic">
+                        </div>
+                        <div class="product-lead text-center">
+                            <h6 class="p_name">Mi Earphone </h6>
+                            <div class="p_price">From ₹ 399 </div>
+                            <div class="p_brand">newbrand || new Launch</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <div class="product-pic">
+                            <img src="./static/images/pp.jpeg" alt="product-pic">
+                        </div>
+                        <div class="product-lead text-center">
+                            <h6 class="p_name">Mi Earphone </h6>
+                            <div class="p_price">From ₹ 399 </div>
+                            <div class="p_brand">newbrand || new Launch</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <div class="product-pic">
+                            <img src="./static/images/pp.jpeg" alt="product-pic">
+                        </div>
+                        <div class="product-lead text-center">
+                            <h6 class="p_name">Mi Earphone </h6>
+                            <div class="p_price">From ₹ 399 </div>
+                            <div class="p_brand">newbrand || new Launch</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="">
+                        <div class="product-pic">
+                            <img src="./static/images/pp.jpeg" alt="product-pic">
+                        </div>
+                        <div class="product-lead text-center">
+                            <h6 class="p_name">Mi Earphone </h6>
+                            <div class="p_price">From ₹ 399 </div>
+                            <div class="p_brand">newbrand || new Launch</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+    </div> {% endcomment %}
+
+
+
+</div>
+
+
+<!-- End Content here -->
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

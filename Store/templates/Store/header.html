@@ -1,0 +1,100 @@
+{% load static %}
+
+<!-- Nav Bar -->
+<section class="n-nav-nk">
+    <div class="container">
+        <nav class="top-main-nav">
+            <div class="main-brand d-flex">
+
+                 <a href="{% url 'home' %}" class="brand_ref"><img src="{% static 'Store/images/logo.png' %}" alt="Brand-Name" class="brand-logo"></a> 
+                
+                <div class="search-box">
+                    <input type="text" class="nav-src" placeholder="Search for Car, Bike, Home applinces">
+                    <button type="submit" class="src-btn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            <div class="main-side-nav d-flex">
+                <a href="{% url 'cart' %}" class="nnowrap num-badge"><i class="fas fa-shopping-cart"></i><span
+                        class="cart-num">{{ cartItems }}</span> <span class="hide_name"> Cart </span> </a>
+                <div class="log-sign d-flex">
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}" class="nnowrap"><i class="fas fa-sign-in-alt"></i> Logout</a>
+
+                    {% else %}
+                    <a href="{% url 'login' %}" class="nnowrap"><i class="fas fa-user"></i> <span class="hide_name">Login</span></a>
+                    <!-- <a href=""class="nnowrap"><i class="fas fa-user-plus"></i> Signup </a> -->
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+
+</section>
+<div class="hidden-src">
+    <div class="d-flex justify-content-between">
+        <button id="n-hamburger" onclick="cattoggler()"><i class="fas fa-bars"></i></button>
+        <div class="src-box2">
+            <input type="text" class="input-search" placeholder="Search for Car, Bike, Home applinces">
+            <button type="submit" class="src-btn"><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+</div>
+<nav class="nav-cat-nav">
+    <ul class="nav-categeory">
+        <li class="cat-close"><button class="float-right" onclick="cattoggler()">X</button></li>
+        <li class="submenu"><a href="#">Electronic</a>
+           
+        </li>
+
+
+
+
+        <li class="submenu"><a href="#">Kitchen </a>
+            <ul>
+                
+            </ul>
+        </li>
+
+
+
+
+        <li class="submenu"><a href="#">Men </a>
+            <ul>
+               
+            </ul>
+        </li>
+
+
+
+        <li class="submenu"><a href="#">Women </a>
+            <ul>
+               
+            </ul>
+        </li>
+
+
+
+        <li class="submenu"><a href="#">Home & Furniture </a>
+            <ul>
+               
+            </ul>
+        </li>
+
+
+
+        <li class="submenu"><a href="#">Sports </a>
+            <ul>
+                
+            </ul>
+        </li>
+
+
+
+        <li><a href="">Offer Zone</a></li>
+
+    </ul>
+</nav>
+
+<!-- end Nav Bar -->

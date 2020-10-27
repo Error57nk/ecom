@@ -1,0 +1,151 @@
+{% load static %}
+<section class="footer">
+
+    <footer class="footer-section foot-bg npt-30">
+        <div class="foot-bd-img"></div>
+        <div class="container">
+            <div class="row top-sec">
+                <div class="col-md-3 col-sm-6 foot-links">
+                    <div class="footer-widget">
+                        <div class="mb-3">
+                        
+                            <a href="{% url 'home' %}"><img src="{% static 'Store/images/logo2.png' %}" alt="Site name"></a>
+                        </div>
+                        <!-- <p>Cras vitae turpis lacinia, lacinia lacus non, fermentum nisi. Donec et sollicitudin est, in
+                            euismod erat. Ut at erat et arcu pulvinar cursus a eget.</p> -->
+
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 foot-links">
+                    <h5 class="text-uppercase ncolor-white mb-3">Important Links</h5>
+
+                    <ul class="">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'home' %}">About</a></li>
+                        <li><a href="{% url 'home' %}">Product</a></li>
+                        <li><a href="{% url 'home' %}">Contact</a></li>
+                        <li><a href="{% url 'home' %}">Payments</a></li>
+                        <li><a href="{% url 'home' %}">Shippings</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 foot-links">
+                    <h5 class="text-uppercase ncolor-white mb-3">Important Links</h5>
+                    <ul class="">
+                        <li><a href="">Cancellation & Return</a></li>
+                        <li><a href="">Return Policy</a></li>
+                        <li><a href="">Terms Of Use</a></li>
+                        <li><a href="">Security</a></li>
+                        <li><a href="">Sitemap</a></li>
+                        <li><a href="">FAQ</a></li>
+
+                    </ul>
+                </div>
+
+                <div class="col-md-3 col-sm-6 foot-links">
+                    <h5 class="text-uppercase ncolor-white mb-3">Important Links</h5>
+
+                    <ul class="">
+                        <li><a href="">Online Shopping in Siliguri</a></li>
+                        <li><a href="">Online Shopping in WB</a></li>
+                        <li><a href="">Online Shopping Site</a></li>
+                        <li><a href="">Best Online Shopping Site</a></li>
+                        <li><a href="">Best Phone Under 10K</a></li>
+                        <li><a href="">Puja Dress Specials</a></li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+            <hr class="foot-hr1">
+            <div class="row foot-md-sec">
+                <div class="col-md-4 text-center">
+                    <h5 class="ncolor-white text-uppercase">GET IN TOUCH</h5>
+                    <h6><i class="fas fa-phone"></i> +91 9679310464</h6>
+                    <h6><i class="fas fa-envelope"></i> site@gmail.com</h6>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h5 class="ncolor-white text-uppercase ">Product Support</h5>
+                    <h6><i class="fas fa-phone"></i> +91 9679310464</h6>
+                    <h6><i class="fas fa-envelope"></i> site@gmail.com</h6>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h5 class="ncolor-white text-uppercase">Delivery Helpline</h5>
+                    <h6><i class="fas fa-phone"></i> +91 9679310464</h6>
+                    <h6><i class="fas fa-envelope"></i> site@gmail.com</h6>
+                </div>
+            </div>
+
+        </div>
+        <hr class="foot-hr2">
+        <div class="lower-ffot">
+            <div class="foot-social">
+            
+                <ul class="d-flex justify-content-center npb-14">
+                    <li class="npl-5 npr-5"><a href="<?= $GLOBALS['facebook_link']?>" target="_blank"><img
+                                src="{% static 'Store/icons/facebook.png ' %}" alt="facebook" class="img-fluid"></a></li>
+                    <li class="npl-5 npr-5"><a href="<?= $GLOBALS['twitter_link']?>" target="_blank"><img
+                                src="{% static 'Store/icons/twitter.png ' %}" alt="twitter" class="img-fluid"></a></li>
+                    <li class="npl-5 npr-5"><a href="<?= $GLOBALS['youtube_link']?>" target="_blank"><img
+                                src="{% static 'Store/icons/youtube.png ' %}" alt="youtube" class="img-fluid"></a></li>
+                    <li class="npl-5 npr-5"><a href="<?= $GLOBALS['linkedin_link']?>" target="_blank"><img
+                                src="{% static 'Store/icons/linkedin.png ' %}" alt="linkedin" class="img-fluid"></a></li>
+                    <li class="npl-5 npr-5"><a href="<?= $GLOBALS['bloger_link']?>" target="_blank"><img
+                                src="{% static 'Store/icons/blog.png ' %}" alt="blog" class="img-fluid"></a></li>
+                    <li class="npl-5 npr-5"><a href="<?= $GLOBALS['whatsapp_link']?>" target="_blank"><img
+                                src="{% static 'Store/icons/whatsapp.png ' %}" alt="whatsapp" class="img-fluid"></a></li>
+                </ul>
+                <p class="text-center ncolor-white foot-lower">Copyright © <?= $GLOBALS["site_name"]?>, 2020. All
+                    Rights
+                    Reserved. </p>
+            </div>
+        </div>
+    </footer>
+
+</section>
+
+
+<a href="#" class="nscroller"><i class="fas fa-angle-up"></i></a>
+
+<div class="lower-nav">
+    <ul class="ln-ul-nav">
+        <li><a href="{%url 'home'%}" class="ln-box">
+                <i class="fas fa-home"></i>
+                <div class="nfont-11">Home</div>
+            </a>
+        </li>
+        <li><a href="javascript:void(0)" onclick="cattoggler()" class="ln-box">
+                <i class="fas fa-th-large"></i>
+                <div class="nfont-11">Category</div>
+            </a>
+        </li>
+        <li><a href="#" class="ln-box">
+                <i class="fas fa-search"></i>
+                <div class="nfont-11">Search</div>
+            </a>
+        </li>
+        <li><a href="{% url 'cart'%}" class="ln-box">
+                <i class="fas fa-shopping-cart"></i>
+                <div class="nfont-11">Cart</div>
+            </a>
+        </li>
+        <li><a href="" class="ln-box">
+                <i class="fas fa-user"></i>
+                <div class="nfont-11">Account</div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<script src="{% static 'Store/js/jquery.js' %}"></script>
+<script src="{% static 'Store/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'Store/js/fontawesome.min.js' %}"></script>
+<script src="{% static 'Store/js/jquery.fancybox.min.js' %}"></script>
+<script src="{% static 'Store/js/theia-sticky-sidebar.min.js' %}"></script>
+<script src="{% static 'Store/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'Store/js/zebra_datepicker.min.js' %}"></script>
+
+<!-- couston js -->
+<script src="{% static 'Store/js/main.js' %}"></script>
+<!-- /couston js -->

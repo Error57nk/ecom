@@ -1,0 +1,81 @@
+{% extends 'Store/base.html' %}
+{% load static %}
+
+
+
+{% block title %}Cart - Vaatteet detination dream{% endblock %}
+
+
+
+{% block body %}
+
+    <div class="container-fluid mb-3">
+
+        <div class="row mt-3">
+            <div class="col-md-6 col-sm-12">
+                <div class="box-element mb-3">
+                    <a class="btn btn-outline-dark" href="{% url 'home' %}">&#x2190; Continue Shopping</a>
+                    <br>
+                    <hr>
+{% if items %}
+{% for item in items %}
+                    <div class="cart2-row">
+                        <div class="cart2-image"><img class="row-image" src="{{ item.product.imageURL }}"></div>
+                        <div class="cart2-name">
+                            <p>{{ item.product.name }}</p>
+                        </div>
+                        <div class="cart2-price">
+                            <p>₹ {{ item.product.price|floatformat:2 }}</p>
+                        </div>
+                        <div class="cart2-qty">
+                            <p class="quantity">{{ item.quantity }}</p>
+                            <div class="quantity">
+                                <img data-product='{{ item.product.id }}' data-action='add'
+                                    class="chg-quantity update-cart update-cart2" src="{% static 'Store/icons/arrow-up.png' %}">
+
+                                <img data-product='{{ item.product.id }}' data-action='remove'
+                                    class="chg-quantity update-cart update-cart2" src="{% static 'Store/icons/arrow-down.png' %}">
+                            </div>
+                        </div>
+                        <div class="cart2-total">
+                            <p>₹ {{ item.get_total|floatformat:2 }}</p>
+                        </div>
+                    </div>
+
+{% endfor %}
+{% else %}
+<h4 class="text-warning text-center">Empty Cart </h4>
+{% endif %}
+
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="box-element">
+
+                    <table class="table">
+                        <tr>
+                            <th>
+                                <h5>Items: <strong>{{ order.get_cart_items }}</strong></h5>
+                            </th>
+                            <th>
+                                <h5>Total:<strong>₹  {{ order.get_cart_total|floatformat:2 }}</strong></h5>
+                            </th>
+                            <th>
+                            {% if order.get_cart_total > 0 %}
+                                <a style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
+                            {% else %}
+                                    <a style="float:right; margin:5px;" class="btn btn-success disabled" href="">Checkout</a>
+                            {% endif %}    
+                            </th>
+                        </tr>
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

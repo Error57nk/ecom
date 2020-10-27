@@ -1,0 +1,97 @@
+{% extends 'Store/base.html' %}
+{% load static %}
+
+
+
+{% block title %}Products - Vaatteet detination dream{% endblock %}
+
+
+
+{% block body %}
+
+    <div class="container-fluid np-10">
+        <div class="row">
+            <!-- Side bar -->
+            <div class="col-md-2 npr-0 sidebar">
+                <div class="bg-white side-bar-filter">
+                    <div class="filter-box">
+                        <div class="d-flex justify-content-between">
+                            <h4>Filter</h4>
+                            <a href="">Clear All</a>
+                        </div>
+                        <div class="filter-list">
+                            <p><span>Mock</span><span>Shopping</span><span>Rolex</span><span>Blue</span></p>
+                        </div>
+                    </div>
+
+                    <div class="price-filter-box">
+                        <h4>Price</h4>
+                    </div>
+                    <div class="price-filter-box">
+                        <h4>Brand</h4>
+                    </div>
+                    <div class="price-filter-box">
+                        <h4>Payment Option</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- /Side bar -->
+
+
+            <!-- main section -->
+            <div class="col-md-10">
+                <div class="bg-white np-10">
+                    <div class="bread-head-product">
+                        <div class="">
+                            <ul class="breadcrumb">
+                               
+                            <h4>{{header}}</h4>
+                            </ul>
+                          
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="product-grid">
+
+                    {% for item in products %}
+                        <a href="{% url 'details' pk=item.id %}" class="product-list">
+                            <div class="list-box">
+                                <div class="list-box-image text-center">
+                                    <img src="{{ item.imageURL }}" alt="Images">
+                                </div>
+                                <div class="list-box-lead">
+                                    <p class="list-title">{{item.name}}</p>
+                                    <p class="list-color">{{item.des}}</p>
+                                    <p><span class="list-rating">4.2 <i class="fas fa-star"></i></span>
+                                        <span>(120)</span>
+                                    </p>
+                                    <p class="list-price">₹{{item.price}} <del><small>₹{{item.price}}</small></del><span>42% off</span></p>
+                                </div>
+                                <button class=""></button>
+                            </div>
+                        </a>
+                    {% endfor %} 
+                        
+                        
+                    </div>
+
+
+                </div>
+
+            </div>
+            <!-- /main section -->
+        </div>
+    </div>
+
+
+    <!-- End Content here -->
+
+{% endblock %}
+
+
+
+
+
+
+
+
